@@ -55,7 +55,7 @@ router.route ( '/country' )
             if ( err )
                 res.send( err );
                 //on success print out object that contains all countries
-                res.join( country );
+                res.json( country );
         });
     });
 //====================================
@@ -73,19 +73,19 @@ router.route( '/country/:country_id' )
         })
     })
 //method that allows you to edit country object
-.put( function ( req, res ) {
+    .put( function ( req, res ) {
     //find country by id, pass country instance to function
-    Country.findById( req.params.country_id, function ( err, country ){
+        Country.findById( req.params.country_id, function ( err, country ){
         //if error
-        if ( err )
-            res.send ( err );
-            //assign new name to the country
-            country.name = req.body.name;
-            //save edited instance of country
-            country.save( function ( err ) {
-                //return message on success
-                res.json({
-                    message: 'Country Updated!'
+            if ( err )
+                res.send ( err );
+                //assign new name to the country
+                country.name = req.body.name;
+                //save edited instance of country
+                country.save( function ( err ) {
+                    //return message on success
+                    res.json({
+                        message: 'Country Updated!'
                 });
             })
     })
@@ -208,10 +208,10 @@ router.route( '/country/:country_id/:region_id' )
             //on success print out message
             res.json({
                 message: "Country Updated"
-            })
-        })
-    })
-})
+            });
+        });
+    });
+});
 //////////////////register our routes
 app.use( '/api', router );
 //start the server
