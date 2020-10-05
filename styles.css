@@ -1,0 +1,14 @@
+body {
+    margin: 25px;
+    font-family: "Dancing Script";
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: rgb(0,160,176);
+    background-color: rgb(106,74,60);
+    text-shadow: 1px 1px 1px black;
+}
+h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+}
